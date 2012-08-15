@@ -46,9 +46,6 @@ class QuestionController
             die("Id not defined!");
 
         if (!$_POST) {
-            if (!isset($_REQUEST['id']))
-                die("Id not defined!");
-
             $question = QuestionModel::load($_REQUEST['id']);
             include(__DIR__ . "/../views/faq_question_edit.php");
         } else {

@@ -45,9 +45,6 @@ class GroupController
             die("Id not defined!");
 
         if (!$_POST) {
-            if (!isset($_REQUEST['id']))
-                die("Id not defined!");
-
             $group = GroupModel::load($_REQUEST['id']);
             include(__DIR__ . "/../views/faq_group_edit.php");
         } else {
