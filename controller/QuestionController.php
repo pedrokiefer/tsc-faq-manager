@@ -5,6 +5,7 @@
  * Time: 5:05 PM
  */
 
+require_once(dirname(__FILE__) . "/../models/GroupModel.php");
 require_once(dirname(__FILE__) . "/../models/QuestionModel.php");
 
 class QuestionController
@@ -15,6 +16,7 @@ class QuestionController
         global $wpdb;
 
         if (!$_POST) {
+            $groups = GroupModel::loadAll();
             include(__DIR__ . "/../views/faq_question_create.php");
         } else {
             $question = new QuestionModel();
@@ -47,6 +49,7 @@ class QuestionController
 
         if (!$_POST) {
             $question = QuestionModel::load($_REQUEST['id']);
+            $groups = GroupModel::loadAll();
             include(__DIR__ . "/../views/faq_question_edit.php");
         } else {
             $question = QuestionModel::load($_REQUEST['id']);

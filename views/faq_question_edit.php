@@ -36,7 +36,11 @@
                     <p>
                         <label for="group_id">FAQ Group:</label>
                         <select name="group_id" id="group_id" style="min-width: 200px;" tabindex="3">
-                            <option value="1">sample</option>
+                            <?php
+                            foreach ($groups as $g) {
+                                echo("<option value=\"". $g->Id ."\">".$g->GroupName."</option>\n");
+                            }
+                            ?>
                         </select>
                     </p>
                     <p>

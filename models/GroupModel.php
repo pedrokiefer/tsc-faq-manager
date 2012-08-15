@@ -58,6 +58,30 @@ class GroupModel extends TscModel
         return $group;
     }
 
+    public static function loadAll()
+    {
+        global $wpdb;
+        $groups = array();
+
+        $tableName = $wpdb->prefix . "tsc_faq_group";
+        $query = "SELECT * FROM {$tableName} WHERE 1";
+
+        $results = $wpdb->get_results($query);
+
+        foreach ($results as $value) {
+            $g = new GroupModel();
+            $g->Id = $value->id;
+            $g->GroupName = $value->group_name;
+            $g->SeachBox = $value->search_box;
+            $g->AskBox = $value->ask_box;
+            $g->Status = $value->status;
+            $g->CreationDate = $value->creation_date;
+            $groups[] = $g;
+        }
+
+        return $groups;
+    }
+
     public function save()
     {
         global $wpdb;
