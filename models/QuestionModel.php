@@ -11,7 +11,7 @@ class QuestionModel extends TscModel
 
     protected $_Id = NULL;
     protected $_GroupId;
-    protected $_QuestionOrder;
+    protected $_QuestionOrder = 0;
     protected $_Question;
     protected $_WhoAsked;
     protected $_Answer;
@@ -50,7 +50,8 @@ class QuestionModel extends TscModel
         return $valid;
     }
 
-    public static function load($id) {
+    public static function load($id)
+    {
         global $wpdb;
 
         $id = $wpdb->escape($id);
@@ -83,6 +84,7 @@ class QuestionModel extends TscModel
 
         $data = array(
             "group_id" => $this->_GroupId,
+            "question_order" => $this->_QuestionOrder,
             "question" => $this->_Question,
             "who_asked" => $this->_WhoAsked,
             "answer" => $this->_Answer,
