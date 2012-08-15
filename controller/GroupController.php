@@ -32,6 +32,7 @@ class GroupController
 
             $group->save();
 
+            header("Content-type: application/json");
             echo json_encode(array("status" => "saved", "id" => $group->Id));
             exit();
         }
@@ -64,6 +65,7 @@ class GroupController
 
             $group->save();
 
+            header("Content-type: application/json");
             echo json_encode(array("status" => "saved", "id" => $group->Id));
             exit();
         }

@@ -35,6 +35,7 @@ class QuestionController
 
             $question->save();
 
+            header("Content-type: application/json");
             echo json_encode(array("status" => "saved", "id" => $question->Id));
             exit();
         }
@@ -68,6 +69,7 @@ class QuestionController
 
             $question->save();
 
+            header("Content-type: application/json");
             echo json_encode(array("status" => "saved", "id" => $question->Id));
             exit();
         }
