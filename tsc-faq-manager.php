@@ -74,10 +74,13 @@ class TscFaqManager
 
         $req = explode("@", $_REQUEST['req']);
         $ctlName = $req[1] . "Controller";
-        $controller = new $ctlName;
-        $action = $req[0];
-
         try {
+            if (!class_exists($ctlName))
+                throw new TscAsyncException("Invalid controller");
+
+            $controller = new $ctlName;
+            $action = $req[0];
+
             if (method_exists($controller, $action)) {
                 $controller->$action();
             } else {
@@ -88,7 +91,7 @@ class TscFaqManager
             $error = array(
                 "Exception" => $e->getMessage(),
                 "Trace" => $e->getTrace());
-            echo json_encode(array("error" => $error));
+            echo json_encode(array("status" => "error", "message" => $error));
         }
         exit();
     }
