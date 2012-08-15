@@ -15,6 +15,7 @@
  */
 
 require_once(dirname(__FILE__) . '/TscAsyncException.php');
+require_once(dirname(__FILE__) . '/controller/SettingsController.php');
 require_once(dirname(__FILE__) . '/controller/GroupController.php');
 require_once(dirname(__FILE__) . '/controller/QuestionController.php');
 require_once(dirname(__FILE__) . '/controller/GroupListTable.php');
@@ -27,6 +28,7 @@ class TscFaqManager
     public $version = '1.0';
     public $groupTableName;
     public $questionTableName;
+    public $settings;
 
     function __construct()
     {
@@ -36,6 +38,7 @@ class TscFaqManager
 
         $this->groupTableName = $wpdb->prefix . "tsc_faq_group";
         $this->questionTableName = $wpdb->prefix . "tsc_faq_question";
+        $this->settings = &SettingsModel::load();
 
         add_action('admin_menu', array(&$this, 'onAdminMenu'));
 
@@ -92,7 +95,7 @@ class TscFaqManager
 
     function handle_page_faq_settings()
     {
-        include dirname(__FILE__) . '/views/faq_settings.php';
+        SettingsController::renderPage();
     }
 
     function handle_page_faq_groups()
@@ -121,6 +124,10 @@ class TscFaqManager
         dbDelta($questionTable);
 
         update_option("tsc_faq_db_version", $this->version);
+        SettingsModel::registerOptions();
+
+        /* Reload settings */
+        $this->settings = SettingsModel::load();
     }
 }
 
