@@ -32,10 +32,12 @@ class TscFaqManager
     {
         global $wpdb;
 
+        self::$instance = &$this;
+
         $this->groupTableName = $wpdb->prefix . "tsc_faq_group";
         $this->questionTableName = $wpdb->prefix . "tsc_faq_question";
 
-        add_action('admin_menu', array(&$this, 'on_admin_menu'));
+        add_action('admin_menu', array(&$this, 'onAdminMenu'));
 
         if (is_admin()) {
             wp_enqueue_script('jquery');
@@ -49,9 +51,9 @@ class TscFaqManager
     }
 
     /**
-     *
+     *  Create Admin Area
      */
-    function on_admin_menu()
+    function onAdminMenu()
     {
         if (!is_admin())
             return;
@@ -118,12 +120,14 @@ class TscFaqManager
         dbDelta($groupTable);
         dbDelta($questionTable);
 
-        update_option("tsc_faq_manager_db_version", $this->version);
+        update_option("tsc_faq_db_version", $this->version);
     }
 }
 
 $tscfm = new TscFaqManager();
+
+/* Register Database */
 register_activation_hook(__FILE__, array($tscfm, 'install'));
-if (get_option("tsc_faq_manager_db_version") != $tscfm->version) {
+if (get_option("tsc_faq_db_version") != $tscfm->version) {
     $tscfm->install();
 }

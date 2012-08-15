@@ -38,7 +38,8 @@ class GroupModel extends TscModel
         return $valid;
     }
 
-    public static function load($id) {
+    public static function load($id)
+    {
         global $wpdb;
 
         $id = $wpdb->escape($id);
