@@ -4,7 +4,7 @@
  * Date: 8/7/12
  * Time: 1:47 PM
  */
-class TscModel
+class GenericModel
 {
     protected $validationMessages;
 

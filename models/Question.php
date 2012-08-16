@@ -4,9 +4,9 @@
  * Date: 8/7/12
  * Time: 1:40 PM
  */
-require_once("TscModel.php");
+require_once("GenericModel.php");
 
-class QuestionModel extends TscModel
+class Question extends GenericModel
 {
 
     protected $_Id = NULL;
@@ -60,7 +60,7 @@ class QuestionModel extends TscModel
 
         $result = $wpdb->get_row($wpdb->prepare($query, $id));
 
-        $question = new QuestionModel();
+        $question = new Question();
         $question->_Id = $result->id;
         $question->_GroupId = $result->group_id;
         $question->_QuestionOrder = $result->question_order;
@@ -97,7 +97,7 @@ class QuestionModel extends TscModel
         $results = $wpdb->get_results($wpdb->prepare($query, $id));
 
         foreach ($results as $result) {
-            $q = new QuestionModel();
+            $q = new Question();
             $q->_Id = $result->id;
             $q->_GroupId = $result->group_id;
             $q->_QuestionOrder = $result->question_order;

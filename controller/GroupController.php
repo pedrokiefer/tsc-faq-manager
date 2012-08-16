@@ -4,7 +4,7 @@
  * Date: 8/8/12
  * Time: 9:52 AM
  */
-require_once(dirname(__FILE__) . "/../models/GroupModel.php");
+require_once(dirname(__FILE__) . "/../models/Group.php");
 
 class GroupController
 {
@@ -16,7 +16,7 @@ class GroupController
         if (!$_POST) {
             include(__DIR__ . "/../views/faq_group_create.php");
         } else {
-            $group = new GroupModel();
+            $group = new Group();
 
             $group->GroupName = $wpdb->escape($_POST['group_name']);
             $group->SearchBox = $wpdb->escape($_POST['search_box']);
@@ -46,10 +46,10 @@ class GroupController
             die("Id not defined!");
 
         if (!$_POST) {
-            $group = GroupModel::load($_REQUEST['id']);
+            $group = Group::load($_REQUEST['id']);
             include(__DIR__ . "/../views/faq_group_edit.php");
         } else {
-            $group = GroupModel::load($_REQUEST['id']);
+            $group = Group::load($_REQUEST['id']);
 
             $group->GroupName = $wpdb->escape($_POST['group_name']);
             $group->SearchBox = $wpdb->escape($_POST['search_box']);
@@ -76,7 +76,7 @@ class GroupController
         if (!isset($_REQUEST['id']))
             die("Id not defined!");
 
-        $group = GroupModel::load($_REQUEST['id']);
+        $group = Group::load($_REQUEST['id']);
         $group->delete();
 
         $header = sprintf("Location: %s", $_SERVER['HTTP_REFERER']);

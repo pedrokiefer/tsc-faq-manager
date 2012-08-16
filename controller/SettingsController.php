@@ -5,7 +5,7 @@
  * Time: 2:17 PM
  */
 
-require_once(dirname(__FILE__) . "/../models/SettingsModel.php");
+require_once(dirname(__FILE__) . "/../models/Settings.php");
 
 class SettingsController
 {

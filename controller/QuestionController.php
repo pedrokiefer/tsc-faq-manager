@@ -5,8 +5,8 @@
  * Time: 5:05 PM
  */
 
-require_once(dirname(__FILE__) . "/../models/GroupModel.php");
-require_once(dirname(__FILE__) . "/../models/QuestionModel.php");
+require_once(dirname(__FILE__) . "/../models/Group.php");
+require_once(dirname(__FILE__) . "/../models/Question.php");
 
 class QuestionController
 {
@@ -16,10 +16,10 @@ class QuestionController
         global $wpdb;
 
         if (!$_POST) {
-            $groups = GroupModel::loadAll();
+            $groups = Group::loadAll();
             include(__DIR__ . "/../views/faq_question_create.php");
         } else {
-            $question = new QuestionModel();
+            $question = new Question();
 
             $question->Question = $wpdb->escape($_POST['question']);
             $question->Answer = $wpdb->escape($_POST['answer']);
@@ -49,11 +49,11 @@ class QuestionController
             die("Id not defined!");
 
         if (!$_POST) {
-            $question = QuestionModel::load($_REQUEST['id']);
-            $groups = GroupModel::loadAll();
+            $question = Question::load($_REQUEST['id']);
+            $groups = Group::loadAll();
             include(__DIR__ . "/../views/faq_question_edit.php");
         } else {
-            $question = QuestionModel::load($_REQUEST['id']);
+            $question = Question::load($_REQUEST['id']);
 
             $question->Question = $wpdb->escape($_POST['question']);
             $question->Answer = $wpdb->escape($_POST['answer']);
@@ -80,7 +80,7 @@ class QuestionController
         if (!isset($_REQUEST['id']))
             die("Id not defined!");
 
-        $question = QuestionModel::load($_REQUEST['id']);
+        $question = Question::load($_REQUEST['id']);
         $question->delete();
 
         $header = sprintf("Location: %s", $_SERVER['HTTP_REFERER']);

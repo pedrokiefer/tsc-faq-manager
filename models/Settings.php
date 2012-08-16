@@ -4,9 +4,9 @@
  * Date: 8/15/12
  * Time: 5:11 PM
  */
-require_once("TscModel.php");
+require_once("GenericModel.php");
 
-class SettingsModel extends TscModel
+class Settings extends GenericModel
 {
 
     protected $_EnableQuestions;
@@ -37,7 +37,7 @@ class SettingsModel extends TscModel
     public static function load()
     {
 
-        $settings = new SettingsModel();
+        $settings = new Settings();
 
         $options = array(
             "tsc_faq_enable_questions" => "_EnableQuestions",

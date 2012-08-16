@@ -4,9 +4,9 @@
  * Date: 8/7/12
  * Time: 1:39 PM
  */
-require_once("TscModel.php");
+require_once("GenericModel.php");
 
-class GroupModel extends TscModel
+class Group extends GenericModel
 {
     protected $_Id = NULL;
     protected $_GroupName;
@@ -48,7 +48,7 @@ class GroupModel extends TscModel
 
         $result = $wpdb->get_row($wpdb->prepare($query, $id));
 
-        $group = new GroupModel();
+        $group = new Group();
         $group->Id = $result->id;
         $group->GroupName = $result->group_name;
         $group->SeachBox = $result->search_box;
@@ -70,7 +70,7 @@ class GroupModel extends TscModel
         $results = $wpdb->get_results($query);
 
         foreach ($results as $value) {
-            $g = new GroupModel();
+            $g = new Group();
             $g->Id = $value->id;
             $g->GroupName = $value->group_name;
             $g->SeachBox = $value->search_box;

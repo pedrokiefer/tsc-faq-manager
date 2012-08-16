@@ -41,7 +41,7 @@ class TscFaqManager
 
         $this->groupTableName = $wpdb->prefix . "tsc_faq_group";
         $this->questionTableName = $wpdb->prefix . "tsc_faq_question";
-        $this->settings = &SettingsModel::load();
+        $this->settings = &Settings::load();
 
         add_action('admin_menu', array(&$this, 'onAdminMenu'));
         add_action('wp_head', array(&$this, 'addHeaderFiles'));
@@ -93,7 +93,7 @@ class TscFaqManager
         if (!$attributes['id'])
             return false;
 
-        $currentGroup = GroupModel::load($attributes['id']);
+        $currentGroup = Group::load($attributes['id']);
 
         if (!$currentGroup || $currentGroup->Status == 0)
             return false;
@@ -104,7 +104,7 @@ class TscFaqManager
         if (isset($attributes['askbox']))
             $currentGroup->SearchBox = $attributes['askbox'];
 
-        $questions = QuestionModel::loadByGroupId($currentGroup->Id, true, true);
+        $questions = Question::loadByGroupId($currentGroup->Id, true, true);
 
         $skin = $this->settings->Skin;
         require_once(__DIR__ . '/skins/' . $skin);
@@ -180,18 +180,18 @@ class TscFaqManager
     {
         global $wpdb;
 
-        $groupTable = sprintf(GroupModel::$groupTable, $this->groupTableName);
-        $questionTable = sprintf(QuestionModel::$questionTable, $this->questionTableName);
+        $groupTable = sprintf(Group::$groupTable, $this->groupTableName);
+        $questionTable = sprintf(Question::$questionTable, $this->questionTableName);
 
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($groupTable);
         dbDelta($questionTable);
 
         update_option("tsc_faq_db_version", $this->version);
-        SettingsModel::registerOptions();
+        Settings::registerOptions();
 
         /* Reload settings */
-        $this->settings = SettingsModel::load();
+        $this->settings = Settings::load();
     }
 }
 
