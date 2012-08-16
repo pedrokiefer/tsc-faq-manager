@@ -10,6 +10,13 @@ require_once(dirname(__FILE__) . "/../models/SettingsModel.php");
 class SettingsController
 {
 
+    private $skinsDir;
+
+    public function __construct()
+    {
+        $this->skinsDir = dirname(__FILE__) . '/../skins';
+    }
+
     function save()
     {
         global $wpdb, $tscfm;
@@ -38,11 +45,65 @@ class SettingsController
         global $tscfm;
 
         $settings = &$tscfm->settings;
+        $skinsList = $this->loadSkinsData();
         include dirname(__FILE__) . '/../views/faq_settings.php';
+    }
+
+    private function parseSkinData($file)
+    {
+        $defaultHeader = array(
+            "Name" => "Skin Name",
+            "Description" => "Description",
+            "Version" => "Version",
+            "Author" => "Author",
+            "AuthorURI" => "Author URI"
+        );
+
+        $skinData = get_file_data($file, $defaultHeader);
+
+        return $skinData;
     }
 
     private function loadSkinsData()
     {
+        $skins = array();
+        $skinsDir = @ opendir($this->skinsDir);
+        $skinFiles = array();
 
+        if (!$skinsDir)
+            return false;
+
+        while (($file = readdir($skinsDir)) !== false) {
+            if (substr($file, 0, 1) == '.')
+                continue;
+            if (!is_dir($this->skinsDir . '/' . $file)) {
+                if (substr($file, -4) == ".php")
+                    $skinFiles[] = $file;
+            }
+        }
+        closedir($skinsDir);
+
+        if (empty($skinFiles))
+            return false;
+
+        foreach ($skinFiles as $file) {
+            if (!is_readable($this->skinsDir . '/' . $file))
+                continue;
+
+            $skinData = $this->parseSkinData($this->skinsDir . '/' . $file);
+
+            if (empty($skinData))
+                continue;
+
+            $skins[sanitize_file_name($file)] = $skinData;
+        }
+
+        uasort($skins,
+            function($a, $b)
+            {
+                return strnatcasecmp($a['Name'], $b['Name']);
+            });
+
+        return $skins;
     }
 }

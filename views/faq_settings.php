@@ -64,7 +64,14 @@
                 <th scope="row"><label for="skin">Current Skin</label></th>
                 <td>
                     <select name="skin" id="skin">
-                        <option value="default">Default Skin</option>
+                        <?php
+                        foreach($skinsList as $skinName => $skin) {
+                            $selected = "";
+                            if (strcmp($settings->Skin, $skinName) == 0)
+                                $selected .= "selected=\"selected\"";
+                            echo("<option value=\"". $skinName ."\"$selected>".$skin['Name']."</option>");
+                        }
+                        ?>
                     </select>
                 </td>
             </tr>
