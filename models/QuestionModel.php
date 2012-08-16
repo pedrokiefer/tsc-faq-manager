@@ -73,6 +73,45 @@ class QuestionModel extends TscModel
         return $question;
     }
 
+    public static function loadByGroupId($groupId, $answered = false, $published = false)
+    {
+        global $wpdb;
+        $questions = array();
+
+        $where = false;
+        $whereArr = array();
+
+        if ($answered)
+            $whereArr[] = "answer != ''";
+
+        if ($published)
+            $whereArr[] = "status = '1'";
+
+        if (!empty($whereArr))
+            $where = "AND " . join("AND ", $whereArr);
+
+        $id = $wpdb->escape($groupId);
+        $tableName = $wpdb->prefix . "tsc_faq_question";
+        $query = "SELECT * FROM {$tableName} WHERE group_id=%d {$where} ORDER BY question_order ASC";
+
+        $results = $wpdb->get_results($wpdb->prepare($query, $id));
+
+        foreach ($results as $result) {
+            $q = new QuestionModel();
+            $q->_Id = $result->id;
+            $q->_GroupId = $result->group_id;
+            $q->_QuestionOrder = $result->question_order;
+            $q->_Question = $result->question;
+            $q->_WhoAsked = $result->who_asked;
+            $q->_Answer = $result->answer;
+            $q->_Status = $result->status;
+            $q->_CreationDate = $result->creation_date;
+            $questions[] = $q;
+        }
+
+        return $questions;
+    }
+
     public function save()
     {
         global $wpdb;

@@ -18,8 +18,11 @@ require_once(dirname(__FILE__) . '/TscAsyncException.php');
 require_once(dirname(__FILE__) . '/controller/SettingsController.php');
 require_once(dirname(__FILE__) . '/controller/GroupController.php');
 require_once(dirname(__FILE__) . '/controller/QuestionController.php');
-require_once(dirname(__FILE__) . '/controller/GroupListTable.php');
-require_once(dirname(__FILE__) . '/controller/QuestionListTable.php');
+
+if (is_admin()) {
+    require_once(dirname(__FILE__) . '/controller/GroupListTable.php');
+    require_once(dirname(__FILE__) . '/controller/QuestionListTable.php');
+}
 
 class TscFaqManager
 {
@@ -41,6 +44,8 @@ class TscFaqManager
         $this->settings = &SettingsModel::load();
 
         add_action('admin_menu', array(&$this, 'onAdminMenu'));
+        add_action('wp_head', array(&$this, 'addHeaderFiles'));
+        add_shortcode('tscfaq', array(&$this, 'renderShortCode'));
 
         if (is_admin()) {
             wp_enqueue_script('jquery');
@@ -52,6 +57,61 @@ class TscFaqManager
             add_action('wp_ajax_faqAction', array(&$this, 'handleFaqActions'));
         }
     }
+
+    /**
+     * Include needed files to header
+     */
+    function addHeaderFiles()
+    {
+        $skin = $this->settings->Skin;
+        require_once(__DIR__ . '/skins/' . $skin);
+
+        if (!function_exists('tsc_skin_get_headers'))
+            return;
+
+        $headers = tsc_skin_get_headers();
+
+        if (isset($headers['js'])) {
+            foreach ($headers['js'] as $script) {
+                wp_enqueue_script($script);
+            }
+        }
+
+        if (isset($headers['css'])) {
+            foreach ($headers['css'] as $style) {
+                wp_enqueue_style($style, plugin_dir_url(__FILE__) . "/skins/" . $style);
+            }
+        }
+    }
+
+    /**
+     * Render the short code, based on the current selected skin.
+     */
+    function renderShortCode($attributes)
+    {
+
+        if (!$attributes['id'])
+            return false;
+
+        $currentGroup = GroupModel::load($attributes['id']);
+
+        if (!$currentGroup || $currentGroup->Status == 0)
+            return false;
+
+        if (isset($attributes['searchbox']))
+            $currentGroup->SearchBox = $attributes['searchbox'];
+
+        if (isset($attributes['askbox']))
+            $currentGroup->SearchBox = $attributes['askbox'];
+
+        $questions = QuestionModel::loadByGroupId($currentGroup->Id, true, true);
+
+        $skin = $this->settings->Skin;
+        require_once(__DIR__ . '/skins/' . $skin);
+
+        return tsc_skin_render($currentGroup, $questions);
+    }
+
 
     /**
      *  Create Admin Area
