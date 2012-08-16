@@ -33,7 +33,7 @@ class SettingsController
         exit();
     }
 
-    static function renderPage()
+    public function renderPage()
     {
         global $tscfm;
 

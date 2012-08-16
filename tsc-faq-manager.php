@@ -98,7 +98,8 @@ class TscFaqManager
 
     function handle_page_faq_settings()
     {
-        SettingsController::renderPage();
+        $settingsController = new SettingsController();
+        $settingsController->renderPage();
     }
 
     function handle_page_faq_groups()
