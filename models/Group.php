@@ -42,7 +42,7 @@ class Group extends GenericModel
     {
         global $wpdb;
 
-        $id = $wpdb->escape($id);
+        $id = $wpdb->escape(absint($id));
         $tableName = $wpdb->prefix . "tsc_faq_group";
         $query = "SELECT * FROM {$tableName} WHERE id=%d";
 
@@ -51,9 +51,9 @@ class Group extends GenericModel
         $group = new Group();
         $group->Id = $result->id;
         $group->GroupName = $result->group_name;
-        $group->SeachBox = $result->search_box;
-        $group->AskBox = $result->ask_box;
-        $group->Status = $result->status;
+        $group->SearchBox = $result->search_box == "1" ? true : false;
+        $group->AskBox = $result->ask_box == "1" ? true : false;
+        $group->Status = $result->status == "1" ? true : false;
         $group->CreationDate = $result->creation_date;
 
         return $group;
@@ -73,7 +73,7 @@ class Group extends GenericModel
             $g = new Group();
             $g->Id = $value->id;
             $g->GroupName = $value->group_name;
-            $g->SeachBox = $value->search_box;
+            $g->SearchBox = $value->search_box;
             $g->AskBox = $value->ask_box;
             $g->Status = $value->status;
             $g->CreationDate = $value->creation_date;
