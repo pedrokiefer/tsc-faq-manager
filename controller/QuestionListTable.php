@@ -27,7 +27,7 @@ class QuestionListTable extends WP_List_Table
     function column_default($item, $column_name)
     {
         $actions = array(
-            'edit' => sprintf("<a href=\"%s?action=faqAction&req=edit@Question&width=500&height=400&id=%s\" class=\"thickbox\">Edit</a>", admin_url('admin-ajax.php'), $item['id']),
+            'edit' => sprintf("<a href=\"%s?action=faqAction&req=edit@Question&width=500&height=400&id=%s\" class=\"thickbox\" title=\"Edit Question\">Edit</a>", admin_url('admin-ajax.php'), $item['id']),
             'delete' => sprintf("<a href=\"%s?action=faqAction&req=delete@Question&id=%s\">Delete</a>", admin_url('admin-ajax.php'), $item['id']),
         );
 
