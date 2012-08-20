@@ -9,7 +9,7 @@
 <html>
 <body>
 <div class="wrap">
-    <h2>Create Question</h2>
+    <h2>Edit Question</h2>
 
     <div id="faqMessage" class="bellow-h2"></div>
     <form action="" name="editQuestion" method="post">
@@ -38,7 +38,11 @@
                         <select name="group_id" id="group_id" style="min-width: 200px;" tabindex="3">
                             <?php
                             foreach ($groups as $g) {
-                                echo("<option value=\"". $g->Id ."\">".$g->GroupName."</option>\n");
+                                $selected = "";
+                                if ($g->Id == $question->GroupId)
+                                    $selected = " selected=\"selected\"";
+
+                                echo("<option value=\"". $g->Id ."\"$selected>".$g->GroupName."</option>\n");
                             }
                             ?>
                         </select>
