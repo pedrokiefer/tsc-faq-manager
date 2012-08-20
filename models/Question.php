@@ -73,6 +73,15 @@ class Question extends GenericModel
         return $question;
     }
 
+    public static function updateOrderForId($id, $order)
+    {
+        global $wpdb;
+
+        $tableName = $wpdb->prefix . "tsc_faq_question";
+
+        $wpdb->update($tableName, array("question_order" => $order), array("id" => $id), array("%d"), array("%d"));
+    }
+
     public static function loadByGroupId($groupId, $answered = false, $published = false)
     {
         global $wpdb;
