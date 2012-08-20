@@ -80,13 +80,17 @@ class TscFaqManager
 
         if (isset($headers['js'])) {
             foreach ($headers['js'] as $script) {
-                wp_enqueue_script($script);
+                if (is_array($script)) {
+                    wp_enqueue_script($script["name"], $script["file"]);
+                } else {
+                    wp_enqueue_script($script);
+                }
             }
         }
 
         if (isset($headers['css'])) {
-            foreach ($headers['css'] as $style) {
-                wp_enqueue_style($style, plugin_dir_url(__FILE__) . "/skins/" . $style);
+            foreach ($headers['css'] as $name => $style) {
+                wp_enqueue_style($name, $style);
             }
         }
     }
@@ -109,7 +113,7 @@ class TscFaqManager
             $currentGroup->SearchBox = $attributes['searchbox'];
 
         if (isset($attributes['askbox']))
-            $currentGroup->SearchBox = $attributes['askbox'];
+            $currentGroup->AskBox = $attributes['askbox'];
 
         $questions = Question::loadByGroupId($currentGroup->Id, true, true);
 
