@@ -30,8 +30,9 @@ class Question extends GenericModel
         PRIMARY KEY (id),
         KEY group_id (group_id),
         KEY question_order (question_order),
-        KEY status (status)
-        )";
+        KEY status (status),
+        FULLTEXT question_index (question, answer)
+        ) ENGINE=MyISAM";
 
     public function validate()
     {
