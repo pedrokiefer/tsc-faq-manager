@@ -7,6 +7,7 @@
 
 require_once(dirname(__FILE__) . "/../models/Group.php");
 require_once(dirname(__FILE__) . "/../models/Question.php");
+require_once(dirname(__FILE__) . "/MailHelper.php");
 
 class QuestionController
 {
@@ -43,7 +44,7 @@ class QuestionController
 
     function edit()
     {
-        global $wpdb;
+        global $wpdb, $tscfm;
 
         if (!isset($_REQUEST['id']))
             die("Id not defined!");
@@ -68,6 +69,11 @@ class QuestionController
             }
 
             $question->save();
+
+            if ($tscfm->settings->NotifyOnAnswer == "1" && $question->Status == "1" && !empty($question->Answer)) {
+                MailHelper::sendReplyEmail($question);
+            }
+
 
             header("Content-type: application/json");
             echo json_encode(array("status" => "saved", "id" => $question->Id));

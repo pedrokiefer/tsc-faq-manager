@@ -122,6 +122,30 @@ class Question extends GenericModel
         return $questions;
     }
 
+    public static function searchByGroupId($groupId, $keywords)
+    {
+        global $wpdb;
+        $questions = array();
+
+        $tableName = $wpdb->prefix . "tsc_faq_question";
+        $query = "SELECT *, MATCH (question, answer) AGAINST ('%s') AS score ";
+        $query .= "FROM {$tableName} WHERE group_id=%d ";
+        $query .= "AND answer != '' AND status = '1' ";
+        $query .= "AND MATCH (question, answer) AGAINST ('%s') ";
+        $query .= "ORDER BY score DESC";
+
+        $results = $wpdb->get_results($wpdb->prepare($query, $keywords, $groupId, $keywords));
+
+        foreach ($results as $result) {
+            $r = array();
+            $r["question"] = $result->question;
+            $r["answer"] = $result->answer;
+            $questions[] = $r;
+        }
+
+        return $questions;
+    }
+
     public function save()
     {
         global $wpdb;

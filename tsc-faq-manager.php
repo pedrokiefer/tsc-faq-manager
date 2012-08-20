@@ -16,6 +16,7 @@
 
 require_once(dirname(__FILE__) . '/TscAsyncException.php');
 require_once(dirname(__FILE__) . '/controller/SettingsController.php');
+require_once(dirname(__FILE__) . '/controller/ViewController.php');
 require_once(dirname(__FILE__) . '/controller/GroupController.php');
 require_once(dirname(__FILE__) . '/controller/QuestionController.php');
 
@@ -47,6 +48,9 @@ class TscFaqManager
         add_action('admin_enqueue_scripts', array(&$this, 'enqueueAdminScripts'));
 
         add_action('wp_head', array(&$this, 'addHeaderFiles'));
+
+        add_action('wp_ajax_faqQuery', array($this, 'handleFaqQuery'));
+        add_action('wp_ajax_nopriv_faqQuery', array($this, 'handleFaqQuery'));
         add_shortcode('tscfaq', array(&$this, 'renderShortCode'));
 
         if (is_admin()) {
@@ -163,6 +167,26 @@ class TscFaqManager
                 "Exception" => $e->getMessage(),
                 "Trace" => $e->getTrace());
             echo json_encode(array("status" => "error", "message" => $error));
+        }
+        exit();
+    }
+
+    public function handleFaqQuery()
+    {
+        if (!isset($_REQUEST['req']))
+            die();
+
+        if (!$_POST)
+            die();
+
+        $controller = new ViewController();
+        if ($_POST['req'] == "search") {
+            $controller->searchQuestion();
+        } else if ($_POST['req'] == "question") {
+            $controller->addNewQuestion();
+        } else {
+            header("Content-type: application/json");
+            echo json_encode(array("status" => "error", "message" => "Invalid request"));
         }
         exit();
     }
