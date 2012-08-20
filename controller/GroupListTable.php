@@ -29,6 +29,7 @@ class GroupListTable extends WP_List_Table
     {
         $actions = array(
             'edit' => sprintf("<a href=\"%s?action=faqAction&req=edit@Group&width=500&height=400&id=%s\" class=\"thickbox\">Edit</a>", admin_url('admin-ajax.php'), $item['id']),
+            'editOrder' => sprintf("<a href=\"%s?action=faqAction&req=editOrder@Group&width=500&height=500&id=%s\" class=\"thickbox\" title=\"Order Questions\">Order Questions</a>", admin_url('admin-ajax.php'), $item['id']),
             'delete' => sprintf("<a href=\"%s?action=faqAction&req=delete@Group&id=%s\">Delete</a>", admin_url('admin-ajax.php'), $item['id']),
         );
 

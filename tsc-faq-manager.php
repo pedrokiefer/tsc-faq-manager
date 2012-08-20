@@ -44,18 +44,25 @@ class TscFaqManager
         $this->settings = &Settings::load();
 
         add_action('admin_menu', array(&$this, 'onAdminMenu'));
+        add_action('admin_enqueue_scripts', array(&$this, 'enqueueAdminScripts'));
+
         add_action('wp_head', array(&$this, 'addHeaderFiles'));
         add_shortcode('tscfaq', array(&$this, 'renderShortCode'));
 
         if (is_admin()) {
-            wp_enqueue_script('jquery');
-            wp_enqueue_script('post');
-            wp_enqueue_script('editor');
-            wp_enqueue_script('thickbox');
-            wp_enqueue_style('thickbox');
-
             add_action('wp_ajax_faqAction', array(&$this, 'handleFaqActions'));
         }
+    }
+
+    function enqueueAdminScripts()
+    {
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('jquery-ui-sortable');
+        wp_enqueue_script('post');
+        wp_enqueue_script('editor');
+        wp_enqueue_script('thickbox');
+        wp_enqueue_style('thickbox');
+        wp_enqueue_style('jquery-ui-smoothness', "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/smoothness/jquery-ui.css");
     }
 
     /**
