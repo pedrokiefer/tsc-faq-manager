@@ -1,0 +1,326 @@
+# Copyright (C) 2012 Tecnosenior FAQ Manager
+# This file is distributed under the same license as the Tecnosenior FAQ Manager package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Tecnosenior FAQ Manager 1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/tsc-faq-manager\n"
+"POT-Creation-Date: 2012-08-21 17:32:46+00:00\n"
+"PO-Revision-Date: 2012-08-21 14:49-0300\n"
+"Last-Translator: Pedro Kiefer <pedro@kiefer.com.br>\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: controller/GroupController.php:47 controller/GroupController.php:78
+#: controller/GroupController.php:113
+msgid "Id not defined!"
+msgstr "Id não definido!"
+
+#: controller/GroupController.php:93
+msgid "Not a post"
+msgstr "Não é um POST"
+
+#: controller/GroupController.php:98
+msgid "Invalid Post"
+msgstr "POST inválido"
+
+#: controller/GroupListTable.php:22
+msgid "group"
+msgstr "grupo"
+
+#: controller/GroupListTable.php:23
+msgid "groups"
+msgstr "grupos"
+
+#: controller/GroupListTable.php:31 views/faq_group_edit.php:11
+msgid "Edit Group"
+msgstr "Editar Grupo"
+
+#: controller/GroupListTable.php:31 controller/QuestionListTable.php:30
+msgid "Edit"
+msgstr "Editar"
+
+#: controller/GroupListTable.php:33 views/faq_group_edit_order.php:9
+msgid "Order Questions"
+msgstr "Ordenar Questões"
+
+#: controller/GroupListTable.php:35 controller/QuestionListTable.php:32
+msgid "Delete"
+msgstr "Apagar"
+
+#: controller/GroupListTable.php:57
+msgid "Name"
+msgstr "Nome"
+
+#: controller/GroupListTable.php:58 tsc-faq-manager.php:176
+#: tsc-faq-manager.php:177 views/faq_questions.php:10
+msgid "Questions"
+msgstr "Questões"
+
+#: controller/GroupListTable.php:59
+msgid "Search Box"
+msgstr "Caixa de Pesquisa"
+
+#: controller/GroupListTable.php:60
+msgid "Ask Box"
+msgstr "Caixa de Perguntas"
+
+#: controller/GroupListTable.php:61 controller/QuestionListTable.php:57
+#: views/faq_group_create.php:46 views/faq_group_edit.php:51
+msgid "Status"
+msgstr "Estado"
+
+#: controller/GroupListTable.php:123 controller/QuestionListTable.php:126
+#: views/faq_group_create.php:48 views/faq_group_edit.php:54
+#: views/faq_question_create.php:47 views/faq_question_edit.php:52
+msgid "Active"
+msgstr "Ativo"
+
+#: controller/GroupListTable.php:125 controller/QuestionListTable.php:128
+#: views/faq_group_create.php:49 views/faq_group_edit.php:56
+#: views/faq_question_create.php:48 views/faq_question_edit.php:53
+msgid "Inactive"
+msgstr "Inativo"
+
+#: controller/MailHelper.php:13
+msgid "New FAQ Question Asked @"
+msgstr "Nova Questão no FAQ @"
+
+#: controller/MailHelper.php:32
+msgid "FAQ Question @"
+msgstr "Questão no FAQ @"
+
+#: controller/QuestionListTable.php:21
+msgid "question"
+msgstr "questão"
+
+#: controller/QuestionListTable.php:22
+msgid "questions"
+msgstr "questões"
+
+#: controller/QuestionListTable.php:30 views/faq_question_edit.php:12
+msgid "Edit Question"
+msgstr "Editar Questão"
+
+#: controller/QuestionListTable.php:55
+msgid "Question"
+msgstr "Questão"
+
+#: controller/QuestionListTable.php:56
+msgid "Group"
+msgstr "Grupo"
+
+#: controller/QuestionListTable.php:58
+msgid "Who Asked"
+msgstr "Quem Perguntou"
+
+#: controller/QuestionListTable.php:59
+msgid "Date"
+msgstr "Data"
+
+#: controller/QuestionListTable.php:134
+msgid "d/M/Y"
+msgstr "d/M/Y"
+
+#: controller/ViewController.php:44
+msgid "Invalid Email Address"
+msgstr "Endereço de E-mail Inválido"
+
+#: models/Group.php:34
+msgid "Missing Group Name"
+msgstr "Nome do Grupo está faltando"
+
+#: models/Question.php:44
+msgid "Missing Question"
+msgstr "Questão está faltando"
+
+#: models/Question.php:49
+msgid "Missing Group"
+msgstr "Grupo está faltando"
+
+#: tsc-faq-manager.php:155 tsc-faq-manager.php:156
+msgid "Tecnosenior FAQs"
+msgstr "Tecnosenior FAQs"
+
+#: tsc-faq-manager.php:162 tsc-faq-manager.php:163 views/faq_settings.php:10
+msgid "Settings"
+msgstr "Configurações"
+
+#: tsc-faq-manager.php:169 tsc-faq-manager.php:170 views/faq_groups.php:10
+msgid "Groups"
+msgstr "Grupos"
+
+#: tsc-faq-manager.php:197
+msgid "Invalid controller"
+msgstr "Controlador Inválido"
+
+#: tsc-faq-manager.php:205 tsc-faq-manager.php:235
+msgid "Invalid request"
+msgstr "Requisição Inválida"
+
+#: views/faq_group_create.php:11
+msgid "Create Group"
+msgstr "Criar Grupo"
+
+#: views/faq_group_create.php:21 views/faq_group_edit.php:22
+msgid "Group Name"
+msgstr "Nome do Grupo"
+
+#: views/faq_group_create.php:25 views/faq_group_edit.php:26
+msgid "The name of the group."
+msgstr "O nome do grupo."
+
+#: views/faq_group_create.php:29 views/faq_group_edit.php:30
+msgid "Show Search Box"
+msgstr "Exibir Caixa de Pesquisa"
+
+#: views/faq_group_create.php:31 views/faq_group_create.php:39
+#: views/faq_group_edit.php:33 views/faq_group_edit.php:43
+msgid "Yes"
+msgstr "Sim"
+
+#: views/faq_group_create.php:32 views/faq_group_create.php:40
+#: views/faq_group_edit.php:35 views/faq_group_edit.php:45
+msgid "No"
+msgstr "Não"
+
+#: views/faq_group_create.php:33 views/faq_group_edit.php:36
+msgid "Place a search box above the group questions."
+msgstr "Exibir caixa de pesquisa acima das questões de um dado grupo"
+
+#: views/faq_group_create.php:37 views/faq_group_edit.php:40
+msgid "Show Ask Box"
+msgstr "Exibir Caixa de Perguntas"
+
+#: views/faq_group_create.php:41 views/faq_group_edit.php:46
+msgid ""
+"Place a submission box below the group questions for users/members to ask "
+"questions."
+msgstr ""
+"Coloca uma caixa de pergunta abaixo do grupo de questões exibido, permitindo "
+"que usuários / membros façam perguntas."
+
+#: views/faq_group_create.php:50 views/faq_group_edit.php:57
+msgid ""
+"Deactivating a group will prevent it's questions from being shown on the "
+"front-end."
+msgstr ""
+"Desativando um grupo suas questões deixarão de ser exibidas nas páginas dos "
+"usuários."
+
+#: views/faq_group_create.php:56 views/faq_question_create.php:55
+msgid "Create"
+msgstr "Criar"
+
+#: views/faq_group_edit.php:63 views/faq_group_edit_order.php:28
+#: views/faq_question_edit.php:60
+msgid "Save"
+msgstr "Salvar"
+
+#: views/faq_groups.php:12 views/faq_questions.php:12
+msgid "Add New"
+msgstr "Adicionar Novo"
+
+#: views/faq_question_create.php:12
+msgid "Create Question"
+msgstr "Criar Questão"
+
+#: views/faq_question_create.php:22 views/faq_question_edit.php:23
+msgid "Enter question here:"
+msgstr "Coloque a sua questão aqui:"
+
+#: views/faq_question_create.php:32 views/faq_question_edit.php:33
+msgid "Extra Info"
+msgstr "Informações Extras"
+
+#: views/faq_question_create.php:36 views/faq_question_edit.php:37
+msgid "FAQ Group:"
+msgstr "Grupo de Perguntas Frequentes:"
+
+#: views/faq_question_create.php:46 views/faq_question_edit.php:51
+msgid "Status:"
+msgstr "Estado"
+
+#: views/faq_settings.php:17
+msgid "New Questions"
+msgstr "Novas Questões"
+
+#: views/faq_settings.php:21
+msgid "Enable New Questions"
+msgstr "Habilitar Novas Questões"
+
+#: views/faq_settings.php:24
+msgid "Enable questions on the front-end."
+msgstr "Habilita questões nas páginas dos usuários."
+
+#: views/faq_settings.php:28
+msgid "Notification Address"
+msgstr "Endereço para Notificações"
+
+#: views/faq_settings.php:31
+msgid "Email address to were the notification will be sent."
+msgstr "Endereço de E-mail para onde as notificações serão enviados."
+
+#: views/faq_settings.php:35
+msgid "Notify on New Questions"
+msgstr "Notificar Novas Questões"
+
+#: views/faq_settings.php:38
+msgid "Get a notification email when a new question is posted on the site."
+msgstr ""
+"Quando uma pergunta é gerada no site você receberá um email notificando a "
+"nova pergunta."
+
+#: views/faq_settings.php:42
+msgid "Notify Enquirer When Answered"
+msgstr "Notificar Quem Perguntou Quando Respondido"
+
+#: views/faq_settings.php:45
+msgid "Send an email to the person that posted the question."
+msgstr ""
+"Envia um e-mail notificando a pessoa que realizou a pergunta quando ela for "
+"respondida."
+
+#: views/faq_settings.php:49
+msgid "Require Email Address"
+msgstr "Requisitar Endereço de E-mail"
+
+#: views/faq_settings.php:52
+msgid "To ask a question, the person needs a valid email address."
+msgstr ""
+"Para realizar uma pergunta a pessoa precisa de um endereço de e-mail válido."
+
+#: views/faq_settings.php:58
+msgid "Shortcode Skin"
+msgstr "Modelo de Shortcode"
+
+#: views/faq_settings.php:62
+msgid "Current Skin"
+msgstr "Modelo Atual"
+
+#: views/faq_settings.php:80
+msgid "Save Changes"
+msgstr "Salvar Alterações"
+
+#. Plugin Name of the plugin/theme
+msgid "Tecnosenior FAQ Manager"
+msgstr "Tecnosenior FAQ Manager"
+
+#. Plugin URI of the plugin/theme
+msgid "www.tecnosenior.com"
+msgstr "www.tecnosenior.com"
+
+#. Description of the plugin/theme
+msgid "Managing Frequently Asked Questions was Never So Easy."
+msgstr "Gerenciar Perguntas Frequentes nunca foi tão fácil"
+
+#. Author of the plugin/theme
+msgid "Pedro Kiefer"
+msgstr "Pedro Kiefer"
+
+#. Author URI of the plugin/theme
+msgid "http://www.pedro.kiefer.com.br"
+msgstr "http://www.pedro.kiefer.com.br"
