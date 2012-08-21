@@ -19,9 +19,9 @@ function tsc_skin_get_headers()
         "js" => array(
             "jquery",
             "jquery-ui",
-            array("name" => "tsc-faq", "file" => plugin_dir_url(__FILE__) . "/tsc-faq.js")
+            array("name" => "tecnosenior-faq", "file" => plugin_dir_url(__FILE__) . "/tecnosenior-faq.js")
         ),
-        "css" => array("tsc-faq" => plugin_dir_url(__FILE__) . "/tsc-faq.css")
+        "css" => array("tecnosenior-faq" => plugin_dir_url(__FILE__) . "/tecnosenior-faq.css")
     );
 
     return $headers;
@@ -57,10 +57,10 @@ function render_search_box($groupId)
     $html .= "<input type=\"hidden\" name=\"action\" value=\"faqQuery\"/>";
     $html .= "<input type=\"hidden\" name=\"req\" value=\"search\"/>";
     $html .= "<input type=\"hidden\" name=\"groupId\" value=\"{$groupId}\"/>";
-    $html .= "    <label for=\"faq-search\" class=\"faq-search\">Palavra Chave</label>";
+    $html .= "    <label for=\"faq_query\" class=\"faq-search\">Palavra Chave</label>";
     $html .= "    <div class=\"faq-search-field\">";
-    $html .= "        <input type=\"text\" name=\"faq_search\" id=\"faq-search\" value=\"\"/>";
-    $html .= "        <img src=\"" . plugin_dir_url(__FILE__) . "faq-magnifier.png\" width=\"22\" height=\"28\">";
+    $html .= "        <input type=\"text\" name=\"faq_query\" id=\"faq_query\" value=\"\"/>";
+    $html .= "        <img id=\"faq-magnifier\" src=\"" . plugin_dir_url(__FILE__) . "faq-magnifier.png\" width=\"22\" height=\"28\">";
     $html .= "    </div>";
     $html .= "</form>";
     $html .= "</div>";

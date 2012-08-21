@@ -7,10 +7,10 @@
     $.fn.faqSearch = function (options) {
         var renderResult = function (data, even) {
             var rowClass = even ? "even" : "odd";
-            var header = $("<div/>", {class: "question-head "+ rowClass})
+            var header = $("<div/>", {class:"question-head " + rowClass})
                 .append($("<h2></h2>")
-                    .append($("<a></a>", {text:data["question"], href:"#"}))
-                )
+                .append($("<a></a>", {text:data["question"], href:"#"}))
+            );
 
             header.click(function () {
                 $(this).next().slideToggle('slow');
@@ -24,10 +24,19 @@
 
         var settings = $.extend({
             target:false,
+            bindImage:false,
             renderResult:renderResult
         }, options);
 
         return this.each(function () {
+            var self = this;
+
+            if (settings.bindImage != false) {
+                settings.bindImage.click(function () {
+                    $(self).trigger('submit');
+                })
+            }
+
             $(this).submit(function (e) {
                 e.preventDefault();
                 var form = $(this);
@@ -36,7 +45,7 @@
                         log.console(data);
                     } else if (data.status == "success") {
                         $(settings.target).empty();
-                        $.each(data.result, function(index, value) {
+                        $.each(data.result, function (index, value) {
                             $(settings.target).append(settings.renderResult(value, (index % 2 == 1)));
                         })
                     }
@@ -45,24 +54,3 @@
         });
     }
 })(jQuery);
-
-jQuery(document).ready(function ($) {
-    $("form[name=search]").faqSearch({
-       target: $("#faq-questions-list")
-    });
-    $("form[name='ask-question']").submit(function(e) {
-        e.preventDefault();
-        var form = $(this);
-        $.post(TscFaqAjax.ajaxurl, form.serialize(), function(data) {
-            if(data.status == "error") {
-                alert(data.message);
-            } else if (data.status == "success") {
-                alert("Sent!");
-            }
-        });
-    });
-    $('.faq-questions .question-head').click(function () {
-        $(this).next().slideToggle('slow');
-        return false;
-    }).next().hide();
-});

@@ -75,6 +75,11 @@ class TscFaqManager
     function addHeaderFiles()
     {
         $skin = $this->settings->Skin;
+
+        /* Basic FAQ Javascript, always include it! */
+        wp_enqueue_script('tsc-faq', plugin_dir_url(__FILE__) . '/js/tsc-faq.js');
+        wp_localize_script('tsc-faq', 'TscFaqAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
+
         require_once(__DIR__ . '/skins/' . $skin);
 
         if (!function_exists('tsc_skin_get_headers'))

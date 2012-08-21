@@ -17,11 +17,11 @@ class ViewController
         if (!isset($_POST['groupId']))
             die();
 
-        if (empty($_POST['faq_search']) || $_POST['faq_search'] == "") {
+        if (empty($_POST['faq_query']) || $_POST['faq_query'] == "") {
             die();
         }
 
-        $questions = Question::searchByGroupId($_POST['groupId'], $_POST['faq_search']);
+        $questions = Question::searchByGroupId($_POST['groupId'], $_POST['faq_query']);
         $result = array("status" => "success", "result" => $questions);
 
         header("Content-type: application/json");
