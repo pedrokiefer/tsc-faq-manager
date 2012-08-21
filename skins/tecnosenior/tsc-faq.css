@@ -61,7 +61,7 @@ label.faq-search {
     height: 13px;
     top: 17px;
     left: 45px;
-    z-index: 2;
+    z-index: 4;
     content: url("./faq-question-darkblue.png");
 }
 
