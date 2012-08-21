@@ -21,6 +21,9 @@ require_once(dirname(__FILE__) . '/controller/GroupController.php');
 require_once(dirname(__FILE__) . '/controller/QuestionController.php');
 
 if (is_admin()) {
+    if (!class_exists('WP_List_Table')) {
+        require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
+    }
     require_once(dirname(__FILE__) . '/controller/GroupListTable.php');
     require_once(dirname(__FILE__) . '/controller/QuestionListTable.php');
 }
