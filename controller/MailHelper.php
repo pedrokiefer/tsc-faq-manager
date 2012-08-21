@@ -19,7 +19,12 @@ class MailHelper
         $message .= "<p>{$question}</p>";
         $message .= "</div>";
 
-        wp_mail($tscfm->settings->EmailAddress, $subject, $message);
+        $headers = array("From: Tecnosenior FAQ <pkiefer@gmail.com>",
+            "Content-Type: text/html"
+        );
+        $h = implode("\r\n",$headers) . "\r\n";
+
+        wp_mail($tscfm->settings->EmailAddress, $subject, $message, $h);
     }
 
     public static function sendReplyEmail($question)
@@ -34,6 +39,11 @@ class MailHelper
         $message .= "<p>{$question->Answer}</p>";
         $message .= "</div>";
 
-        wp_mail($question->WhoAsked, $subject, $message);
+        $headers = array("From: Tecnosenior FAQ <pkiefer@gmail.com>",
+            "Content-Type: text/html"
+        );
+        $h = implode("\r\n",$headers) . "\r\n";
+
+        wp_mail($question->WhoAsked, $subject, $message, $h);
     }
 }
