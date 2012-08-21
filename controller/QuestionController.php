@@ -55,6 +55,14 @@ class QuestionController
             include(__DIR__ . "/../views/faq_question_edit.php");
         } else {
             $question = Question::load($_REQUEST['id']);
+            $sendMail = false;
+
+            if ($question->Type == 1) {
+                if (!empty($_POST['answer']) && $_POST['status'] != 0) {
+                    $question->Type = 2;
+                    $sendMail = true;
+                }
+            }
 
             $question->Question = $_POST['question'];
             $question->Answer = $_POST['answer'];
@@ -70,7 +78,7 @@ class QuestionController
 
             $question->save();
 
-            if ($tscfm->settings->NotifyOnAnswer == "1" && $question->Status == "1" && !empty($question->Answer)) {
+            if (($tscfm->settings->NotifyOnAnswer == "1") && ($sendMail == true)) {
                 MailHelper::sendReplyEmail($question);
             }
 

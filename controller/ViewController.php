@@ -53,6 +53,7 @@ class ViewController
         $question->WhoAsked = $email;
         $question->Status = 0;
         $question->GroupId = $group->Id;
+        $question->Type = 1;
         $question->save();
 
         if ($tscfm->settings->EmailNotify == "1") {

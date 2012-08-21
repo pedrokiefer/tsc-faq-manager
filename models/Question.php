@@ -16,6 +16,7 @@ class Question extends GenericModel
     protected $_WhoAsked;
     protected $_Answer;
     protected $_Status;
+    protected $_Type;
     protected $_CreationDate;
 
     public static $questionTable = "CREATE TABLE %s (
@@ -26,6 +27,7 @@ class Question extends GenericModel
         who_asked varchar(512) NOT NULL,
         answer text NOT NULL,
         status tinyint(1) NOT NULL DEFAULT 1,
+        question_type tinyint(1) NOT NULL DEFAULT 0,
         creation_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (id),
         KEY group_id (group_id),
@@ -69,6 +71,7 @@ class Question extends GenericModel
         $question->_WhoAsked = $result->who_asked;
         $question->_Answer = $result->answer;
         $question->_Status = $result->status;
+        $question->_Type = $result->question_type;
         $question->_CreationDate = $result->creation_date;
 
         return $question;
@@ -115,6 +118,7 @@ class Question extends GenericModel
             $q->_WhoAsked = $result->who_asked;
             $q->_Answer = $result->answer;
             $q->_Status = $result->status;
+            $q->_Type = $result->question_type;
             $q->_CreationDate = $result->creation_date;
             $questions[] = $q;
         }
@@ -161,7 +165,8 @@ class Question extends GenericModel
             "question" => $this->_Question,
             "who_asked" => $this->_WhoAsked,
             "answer" => $this->_Answer,
-            "status" => $this->_Status
+            "status" => $this->_Status,
+            "question_type" => $this->_Type
         );
 
         if ($this->_Id === NULL) {
