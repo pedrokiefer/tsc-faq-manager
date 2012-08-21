@@ -41,7 +41,7 @@ class ViewController
         $email = is_email($_POST["email-address"]);
         if (!$email) {
             header("Content-type: application/json");
-            echo json_encode(array("status" => "error", "message" => "Invalid Email Address"));
+            echo json_encode(array("status" => "error", "message" => __("Invalid Email Address", 'tsc-faq-manager')));
             die();
         }
 

@@ -31,7 +31,7 @@ class Group extends GenericModel
     {
         $valid = true;
         if (!$this->_GroupName || empty($this->_GroupName)) {
-            $this->validationMessages .= "Missing Group Name";
+            $this->validationMessages .= __("Missing Group Name", 'tsc-faq-manager');
             $valid = false;
         }
 

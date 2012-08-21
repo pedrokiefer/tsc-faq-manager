@@ -9,7 +9,7 @@
 <html>
 <body>
 <div class="wrap">
-    <h2>Edit Question</h2>
+    <h2><? echo __("Edit Question", 'tsc-faq-manager'); ?></h2>
 
     <div id="faqMessage" class="bellow-h2"></div>
     <form action="" name="editQuestion" method="post">
@@ -20,7 +20,7 @@
         <div id="post-body" class="metabox-holder">
             <div id="titlediv">
                 <div id="titlewrap">
-                    <label for="title" id="title-prompt-text">Enter question here:</label>
+                    <label for="title" id="title-prompt-text"><? echo __("Enter question here:", 'tsc-faq-manager'); ?></label>
                     <input type="text" id="title" name="question" value="<? echo $question->Question; ?>" tabindex="1"/>
                 </div>
             </div>
@@ -30,11 +30,11 @@
                 </textarea>
             </div>
             <div class="postbox">
-                <h3><span>Extra Info</span></h3>
+                <h3><span><? echo __("Extra Info", 'tsc-faq-manager'); ?></span></h3>
 
                 <div class="inside">
                     <p>
-                        <label for="group_id">FAQ Group:</label>
+                        <label for="group_id"><? echo __("FAQ Group:", 'tsc-faq-manager'); ?></label>
                         <select name="group_id" id="group_id" style="min-width: 200px;" tabindex="3">
                             <?php
                             foreach ($groups as $g) {
@@ -48,16 +48,16 @@
                         </select>
                     </p>
                     <p>
-                        <label for="group_id">Status:</label>
-                        <input type="radio" name="status" value="1"<?php echo $question->Status ? ' checked="checked"' : ''; ?> tabindex="4"/> Active &nbsp;
-                        <input type="radio" name="status" value="0"<?php echo $question->Status ? '' : ' checked="checked"'; ?> tabindex="5"/> Inactive &nbsp;
+                        <label for="group_id"><? echo __("Status:", 'tsc-faq-manager'); ?></label>
+                        <input type="radio" name="status" value="1"<?php echo $question->Status ? ' checked="checked"' : ''; ?> tabindex="4"/> <? echo __("Active", 'tsc-faq-manager'); ?> &nbsp;
+                        <input type="radio" name="status" value="0"<?php echo $question->Status ? '' : ' checked="checked"'; ?> tabindex="5"/> <? echo __("Inactive", 'tsc-faq-manager'); ?> &nbsp;
                     </p>
                 </div>
             </div>
         </div>
 
         <p class="submit">
-            <input type="submit" value="Save" class="button-primary" id="submit" name="submit">
+            <input type="submit" value="<? echo __("Save", 'tsc-faq-manager'); ?>" class="button-primary" id="submit" name="submit">
         </p>
     </form>
 </div>
@@ -93,6 +93,7 @@
             elements:'answerEditor',
             theme:'advanced',
             skin:'wp_theme',
+            language: <? echo '"' . (('' == get_locale()) ? 'en' : strtolower(substr(get_locale(), 0, 2))) . '"'; ?>,
             theme_advanced_toolbar_location:"top",
             theme_advanced_toolbar_align:"left",
             theme_advanced_statusbar_location:"bottom",

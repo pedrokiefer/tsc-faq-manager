@@ -18,8 +18,8 @@ class QuestionListTable extends WP_List_Table
         $this->questionTable = $questionTable;
 
         parent::__construct(array(
-            'singular' => 'question',
-            'plural' => 'questions',
+            'singular' => __('question', 'tsc-faq-manager'),
+            'plural' => __('questions', 'tsc-faq-manager'),
             'ajax' => true
         ));
     }
@@ -27,8 +27,10 @@ class QuestionListTable extends WP_List_Table
     function column_default($item, $column_name)
     {
         $actions = array(
-            'edit' => sprintf("<a href=\"%s?action=faqAction&req=edit@Question&width=500&height=400&id=%s\" class=\"thickbox\" title=\"Edit Question\">Edit</a>", admin_url('admin-ajax.php'), $item['id']),
-            'delete' => sprintf("<a href=\"%s?action=faqAction&req=delete@Question&id=%s\">Delete</a>", admin_url('admin-ajax.php'), $item['id']),
+            'edit' => sprintf("<a href=\"%s?action=faqAction&req=edit@Question&width=500&height=400&id=%s\" class=\"thickbox\" title=\"" . __("Edit Question", 'tsc-faq-manager') . "\">" . __("Edit", 'tsc-faq-manager') . "</a>",
+                admin_url('admin-ajax.php'), $item['id']),
+            'delete' => sprintf("<a href=\"%s?action=faqAction&req=delete@Question&id=%s\">" . __("Delete", 'tsc-faq-manager') . "</a>",
+                admin_url('admin-ajax.php'), $item['id']),
         );
 
         switch ($column_name) {
@@ -50,11 +52,11 @@ class QuestionListTable extends WP_List_Table
     {
         $columns = array(
             'cb' => "",
-            'question' => 'Question',
-            'group_name' => 'Group',
-            'status' => 'Status',
-            'who_asked' => 'Who Asked',
-            'creation_date' => 'Date'
+            'question' => __('Question', 'tsc-faq-manager'),
+            'group_name' => __('Group', 'tsc-faq-manager'),
+            'status' => __('Status', 'tsc-faq-manager'),
+            'who_asked' => __('Who Asked', 'tsc-faq-manager'),
+            'creation_date' => __('Date', 'tsc-faq-manager')
         );
 
         return $columns;
@@ -113,21 +115,22 @@ class QuestionListTable extends WP_List_Table
         $this->items = $data;
     }
 
-    function column_cb($item) {
+    function column_cb($item)
+    {
         return sprintf('<input type="checkbox" name="cb_bulk[]" value="%s" />', $item['id']);
     }
 
     function column_status($item)
     {
         if ($item['status']) {
-            return "<span style=\"color:green\">Active</span>";
+            return "<span style=\"color:green\">" . __("Active", 'tsc-faq-manager') . "</span>";
         } else {
-            return "Inactive";
+            return __("Inactive", 'tsc-faq-manager');
         }
     }
 
     function column_creation_date($item)
     {
-        return date("d/M/Y", strtotime($item['creation_date']));
+        return date(__("d/M/Y", 'tsc-faq-manager'), strtotime($item['creation_date']));
     }
 }

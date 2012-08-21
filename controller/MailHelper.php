@@ -10,7 +10,7 @@ class MailHelper
     {
         global $tscfm;
 
-        $subject = "New FAQ Question Asked @" . get_bloginfo('name');
+        $subject = __("New FAQ Question Asked @", 'tsc-faq-manager') . get_bloginfo('name');
         $message = "<div style=\"width: 600px; margin: 0 auto; font-family: Arial; font-size:10pt; color:#888\">";
         $message .= "<h2 style=\"font-family: Arial; font-size:18pt; color:#888; border-bottom: 1px solid #999\">New FAQ Question</h2>";
         $message .= "<p><strong>From</strong>: {$from}</p>";
@@ -22,14 +22,14 @@ class MailHelper
         $headers = array("From: Tecnosenior FAQ <pkiefer@gmail.com>",
             "Content-Type: text/html"
         );
-        $h = implode("\r\n",$headers) . "\r\n";
+        $h = implode("\r\n", $headers) . "\r\n";
 
         wp_mail($tscfm->settings->EmailAddress, $subject, $message, $h);
     }
 
     public static function sendReplyEmail($question)
     {
-        $subject = "FAQ Question @" . get_bloginfo('name');
+        $subject = __("FAQ Question @", 'tsc-faq-manager') . get_bloginfo('name');
         $message = "<div style=\"width: 600px; margin: 0 auto; font-family: Arial; font-size:10pt; color:#888\">";
         $message .= "<h2 style=\"font-family: Arial; font-size:18pt; color:#888; border-bottom: 1px solid #999\">Answered!</h2>";
         $message .= "<p>Your FAQ question was answered!</p>";
@@ -42,7 +42,7 @@ class MailHelper
         $headers = array("From: Tecnosenior FAQ <pkiefer@gmail.com>",
             "Content-Type: text/html"
         );
-        $h = implode("\r\n",$headers) . "\r\n";
+        $h = implode("\r\n", $headers) . "\r\n";
 
         wp_mail($question->WhoAsked, $subject, $message, $h);
     }

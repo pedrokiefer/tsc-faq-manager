@@ -8,7 +8,7 @@
 <html>
 <body>
 <div class="wrap">
-    <h2>Create Group</h2>
+    <h2><? echo __("Create Group", 'tsc-faq-manager'); ?></h2>
 
     <div id="faqMessage" class="bellow-h2"></div>
     <form action="" name="createGroup" method="post">
@@ -18,44 +18,42 @@
         <table class="form-table">
             <tbody>
             <tr>
-                <th>Group Name</th>
+                <th><? echo __("Group Name", 'tsc-faq-manager'); ?></th>
                 <td>
                     <input type="text" name="group_name" value="" class="regular-text"/>
 
-                    <p class="description">The name of the group.</p>
+                    <p class="description"><? echo __("The name of the group.", 'tsc-faq-manager'); ?></p>
                 </td>
             </tr>
             <tr>
-                <th>Show Search Box</th>
+                <th><? echo __("Show Search Box", 'tsc-faq-manager'); ?></th>
                 <td>
-                    <input type="radio" name="search_box" value="1"/> Yes &nbsp;
-                    <input type="radio" name="search_box" value="0"/> No
-                    <p class="description">Place a search box above the group questions.</p>
+                    <input type="radio" name="search_box" value="1"/> <? echo __("Yes", 'tsc-faq-manager'); ?> &nbsp;
+                    <input type="radio" name="search_box" value="0"/> <? echo __("No", 'tsc-faq-manager'); ?>
+                    <p class="description"><? echo __("Place a search box above the group questions.", 'tsc-faq-manager'); ?></p>
                 </td>
             </tr>
             <tr>
-                <th>Show Ask Box</th>
+                <th><? echo __("Show Ask Box", 'tsc-faq-manager'); ?></th>
                 <td>
-                    <input type="radio" name="ask_box" value="1"/> Yes &nbsp;
-                    <input type="radio" name="ask_box" value="0"/> No
-                    <p class="description">Place a submission box below the group questions for users/members to ask
-                        questions</p>
+                    <input type="radio" name="ask_box" value="1"/> <? echo __("Yes", 'tsc-faq-manager'); ?> &nbsp;
+                    <input type="radio" name="ask_box" value="0"/> <? echo __("No", 'tsc-faq-manager'); ?>
+                    <p class="description"><? echo __("Place a submission box below the group questions for users/members to ask questions.", 'tsc-faq-manager'); ?></p>
                 </td>
             </tr>
 
             <tr>
-                <th>Status</th>
+                <th><? echo __("Status", 'tsc-faq-manager'); ?></th>
                 <td>
-                    <input type="radio" name="status" value="1"/> Active &nbsp;
-                    <input type="radio" name="status" value="0"/> Inactive
-                    <p class="description">Deactivating a group will prevent it's questions from being shown on the
-                        front-end.</p>
+                    <input type="radio" name="status" value="1"/> <? echo __("Active", 'tsc-faq-manager'); ?> &nbsp;
+                    <input type="radio" name="status" value="0"/> <? echo __("Inactive", 'tsc-faq-manager'); ?>
+                    <p class="description"><? echo __("Deactivating a group will prevent it's questions from being shown on the front-end.", 'tsc-faq-manager'); ?></p>
                 </td>
             </tr>
             </tbody>
         </table>
         <p class="submit">
-            <input type="submit" value="Create" class="button-primary" id="submit" name="submit">
+            <input type="submit" value="<? echo __("Create", 'tsc-faq-manager'); ?>" class="button-primary" id="submit" name="submit">
         </p>
     </form>
 </div>

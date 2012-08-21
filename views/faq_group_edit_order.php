@@ -6,7 +6,7 @@
  */
 ?>
 <div class="wrap">
-    <h2>Order Questions</h2>
+    <h2><? echo __("Order Questions", 'tsc-faq-manager'); ?></h2>
 
     <div id="faqMessage" class="bellow-h2"></div>
     <form action="" name="editOrder" method="post">
@@ -25,7 +25,7 @@
             ?>
         </ul>
         <p class="submit">
-            <input type="submit" value="Save" class="button-primary" id="submit" name="submit">
+            <input type="submit" value="<? echo __("Save", 'tsc-faq-manager'); ?>" class="button-primary" id="submit" name="submit">
         </p>
     </form>
 </div>

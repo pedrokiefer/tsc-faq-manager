@@ -44,7 +44,7 @@ class GroupController
         global $wpdb;
 
         if (!isset($_REQUEST['id']))
-            die("Id not defined!");
+            die(__("Id not defined!", 'tsc-faq-manager'));
 
         if (!$_POST) {
             $group = Group::load($_REQUEST['id']);
@@ -75,7 +75,7 @@ class GroupController
     function editOrder()
     {
         if (!isset($_REQUEST['id']))
-            die("Id not defined!");
+            die(__("Id not defined!", 'tsc-faq-manager'));
 
         if (!$_POST) {
             $group = Group::load($_REQUEST['id']);
@@ -90,16 +90,16 @@ class GroupController
         if (!$_POST)
             return json_encode(array(
                 "status" => "error",
-                "message" => "Not a post"));
+                "message" => __("Not a post", 'tsc-faq-manager')));
 
         if (!isset($_POST['sort_ids']))
             return json_encode(array(
                 "status" => "error",
-                "message" => "Invalid Post"));
+                "message" => __("Invalid Post", 'tsc-faq-manager')));
 
         $sortOrder = $_POST['sort_ids'];
 
-        foreach($sortOrder as $order => $id) {
+        foreach ($sortOrder as $order => $id) {
             Question::updateOrderForId($id, $order);
         }
 
@@ -110,7 +110,7 @@ class GroupController
     function delete()
     {
         if (!isset($_REQUEST['id']))
-            die("Id not defined!");
+            die(__("Id not defined!", 'tsc-faq-manager'));
 
         $group = Group::load($_REQUEST['id']);
         $group->delete();

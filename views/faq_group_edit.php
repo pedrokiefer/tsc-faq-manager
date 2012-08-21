@@ -8,7 +8,7 @@
 <html>
 <body>
 <div class="wrap">
-    <h2>Edit Group</h2>
+    <h2><? echo __("Edit Group", 'tsc-faq-manager'); ?></h2>
 
     <div id="faqMessage" class="bellow-h2"></div>
     <form action="" name="editGroup" method="post">
@@ -19,50 +19,48 @@
         <table class="form-table">
             <tbody>
             <tr>
-                <th>Group Name</th>
+                <th><? echo __("Group Name", 'tsc-faq-manager'); ?></th>
                 <td>
                     <input type="text" name="group_name" value="<? echo $group->GroupName; ?>" class="regular-text"/>
 
-                    <p class="description">The name of the group.</p>
+                    <p class="description"><? echo __("The name of the group.", 'tsc-faq-manager'); ?></p>
                 </td>
             </tr>
             <tr>
-                <th>Show Search Box</th>
+                <th><? echo __("Show Search Box", 'tsc-faq-manager'); ?></th>
                 <td>
                     <input type="radio" name="search_box"
-                           value="1"<?php echo $group->SearchBox ? ' checked="checked"' : ''; ?> /> Yes &nbsp;
+                           value="1"<?php echo $group->SearchBox ? ' checked="checked"' : ''; ?> /> <? echo __("Yes", 'tsc-faq-manager'); ?> &nbsp;
                     <input type="radio" name="search_box"
-                           value="0"<?php echo $group->SearchBox ? '' : ' checked="checked"'; ?> /> No
-                    <p class="description">Place a search box above the group questions.</p>
+                           value="0"<?php echo $group->SearchBox ? '' : ' checked="checked"'; ?> /> <? echo __("No", 'tsc-faq-manager'); ?>
+                    <p class="description"><? echo __("Place a search box above the group questions.", 'tsc-faq-manager'); ?></p>
                 </td>
             </tr>
             <tr>
-                <th>Show Ask Box</th>
+                <th><? echo __("Show Ask Box", 'tsc-faq-manager'); ?></th>
                 <td>
                     <input type="radio" name="ask_box" value="1"<?php echo $group->AskBox ? ' checked="checked"' : ''; ?> />
-                    Yes &nbsp;
+                    <? echo __("Yes", 'tsc-faq-manager'); ?> &nbsp;
                     <input type="radio" name="ask_box" value="0"<?php echo $group->AskBox ? '' : ' checked="checked"'; ?> />
-                    No
-                    <p class="description">Place a submission box below the group questions for users/members to ask
-                        questions</p>
+                    <? echo __("No", 'tsc-faq-manager'); ?>
+                    <p class="description"><? echo __("Place a submission box below the group questions for users/members to ask questions.", 'tsc-faq-manager'); ?></p>
                 </td>
             </tr>
 
             <tr>
-                <th>Status</th>
+                <th><? echo __("Status", 'tsc-faq-manager'); ?></th>
                 <td>
                     <input type="radio" name="status" value="1"<?php echo $group->Status ? ' checked="checked"' : ''; ?> />
-                    Active &nbsp;
+                    <? echo __("Active", 'tsc-faq-manager'); ?> &nbsp;
                     <input type="radio" name="status" value="0"<?php echo $group->Status ? '' : ' checked="checked"'; ?> />
-                    Inactive
-                    <p class="description">Deactivating a group will prevent it's questions from being shown on the
-                        front-end.</p>
+                    <? echo __("Inactive", 'tsc-faq-manager'); ?>
+                    <p class="description"><? echo __("Deactivating a group will prevent it's questions from being shown on the front-end.", 'tsc-faq-manager'); ?></p>
                 </td>
             </tr>
             </tbody>
         </table>
         <p class="submit">
-            <input type="submit" value="Save" class="button-primary" id="submit" name="submit">
+            <input type="submit" value="<? echo __("Save", 'tsc-faq-manager'); ?>" class="button-primary" id="submit" name="submit">
         </p>
     </form>
 </div>

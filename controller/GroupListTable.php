@@ -19,8 +19,8 @@ class GroupListTable extends WP_List_Table
         $this->questionTable = $questionTable;
 
         parent::__construct(array(
-            'singular' => 'group',
-            'plural' => 'groups',
+            'singular' => __('group', 'tsc-faq-manager'),
+            'plural' => __('groups', 'tsc-faq-manager'),
             'ajax' => true
         ));
     }
@@ -28,9 +28,12 @@ class GroupListTable extends WP_List_Table
     function column_default($item, $column_name)
     {
         $actions = array(
-            'edit' => sprintf("<a href=\"%s?action=faqAction&req=edit@Group&width=500&height=450&id=%s\" class=\"thickbox\" title=\"Edit Group\">Edit</a>", admin_url('admin-ajax.php'), $item['id']),
-            'editOrder' => sprintf("<a href=\"%s?action=faqAction&req=editOrder@Group&width=500&height=500&id=%s\" class=\"thickbox\" title=\"Order Questions\">Order Questions</a>", admin_url('admin-ajax.php'), $item['id']),
-            'delete' => sprintf("<a href=\"%s?action=faqAction&req=delete@Group&id=%s\">Delete</a>", admin_url('admin-ajax.php'), $item['id']),
+            'edit' => sprintf("<a href=\"%s?action=faqAction&req=edit@Group&width=500&height=450&id=%s\" class=\"thickbox\" title=\"" . __("Edit Group", 'tsc-faq-manager') . "\">" . __("Edit", 'tsc-faq-manager') . "</a>",
+                admin_url('admin-ajax.php'), $item['id']),
+            'editOrder' => sprintf("<a href=\"%s?action=faqAction&req=editOrder@Group&width=500&height=500&id=%s\" class=\"thickbox\" title=\"" . __("Order Questions", 'tsc-faq-manager') . "\">" . __("Order Questions", 'tsc-faq-manager') . "</a>",
+                admin_url('admin-ajax.php'), $item['id']),
+            'delete' => sprintf("<a href=\"%s?action=faqAction&req=delete@Group&id=%s\">" . __("Delete", 'tsc-faq-manager') . "</a>",
+                admin_url('admin-ajax.php'), $item['id']),
         );
 
         switch ($column_name) {
@@ -51,11 +54,11 @@ class GroupListTable extends WP_List_Table
     function get_columns()
     {
         $columns = array(
-            'group_name' => 'Name',
-            'question' => 'Questions',
-            'search_box' => 'Search Box',
-            'ask_box' => 'Ask Box',
-            'status' => 'Status',
+            'group_name' => __('Name', 'tsc-faq-manager'),
+            'question' => __('Questions', 'tsc-faq-manager'),
+            'search_box' => __('Search Box', 'tsc-faq-manager'),
+            'ask_box' => __('Ask Box', 'tsc-faq-manager'),
+            'status' => __('Status', 'tsc-faq-manager'),
             'shortcode' => 'Shortcode'
         );
 
@@ -117,9 +120,9 @@ class GroupListTable extends WP_List_Table
     function column_status($item)
     {
         if ($item['status']) {
-            return "<span style=\"color:green\">Active</span>";
+            return "<span style=\"color:green\">" . __("Active", 'tsc-faq-manager') . "</span>";
         } else {
-            return "Inactive";
+            return __("Inactive", 'tsc-faq-manager');
         }
     }
 

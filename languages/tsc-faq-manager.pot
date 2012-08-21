@@ -1,0 +1,315 @@
+# Copyright (C) 2012 Tecnosenior FAQ Manager
+# This file is distributed under the same license as the Tecnosenior FAQ Manager package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Tecnosenior FAQ Manager 1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/tsc-faq-manager\n"
+"POT-Creation-Date: 2012-08-21 17:32:46+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: controller/GroupController.php:47 controller/GroupController.php:78
+#: controller/GroupController.php:113
+msgid "Id not defined!"
+msgstr ""
+
+#: controller/GroupController.php:93
+msgid "Not a post"
+msgstr ""
+
+#: controller/GroupController.php:98
+msgid "Invalid Post"
+msgstr ""
+
+#: controller/GroupListTable.php:22
+msgid "group"
+msgstr ""
+
+#: controller/GroupListTable.php:23
+msgid "groups"
+msgstr ""
+
+#: controller/GroupListTable.php:31 views/faq_group_edit.php:11
+msgid "Edit Group"
+msgstr ""
+
+#: controller/GroupListTable.php:31 controller/QuestionListTable.php:30
+msgid "Edit"
+msgstr ""
+
+#: controller/GroupListTable.php:33 views/faq_group_edit_order.php:9
+msgid "Order Questions"
+msgstr ""
+
+#: controller/GroupListTable.php:35 controller/QuestionListTable.php:32
+msgid "Delete"
+msgstr ""
+
+#: controller/GroupListTable.php:57
+msgid "Name"
+msgstr ""
+
+#: controller/GroupListTable.php:58 tsc-faq-manager.php:176
+#: tsc-faq-manager.php:177 views/faq_questions.php:10
+msgid "Questions"
+msgstr ""
+
+#: controller/GroupListTable.php:59
+msgid "Search Box"
+msgstr ""
+
+#: controller/GroupListTable.php:60
+msgid "Ask Box"
+msgstr ""
+
+#: controller/GroupListTable.php:61 controller/QuestionListTable.php:57
+#: views/faq_group_create.php:46 views/faq_group_edit.php:51
+msgid "Status"
+msgstr ""
+
+#: controller/GroupListTable.php:123 controller/QuestionListTable.php:126
+#: views/faq_group_create.php:48 views/faq_group_edit.php:54
+#: views/faq_question_create.php:47 views/faq_question_edit.php:52
+msgid "Active"
+msgstr ""
+
+#: controller/GroupListTable.php:125 controller/QuestionListTable.php:128
+#: views/faq_group_create.php:49 views/faq_group_edit.php:56
+#: views/faq_question_create.php:48 views/faq_question_edit.php:53
+msgid "Inactive"
+msgstr ""
+
+#: controller/MailHelper.php:13
+msgid "New FAQ Question Asked @"
+msgstr ""
+
+#: controller/MailHelper.php:32
+msgid "FAQ Question @"
+msgstr ""
+
+#: controller/QuestionListTable.php:21
+msgid "question"
+msgstr ""
+
+#: controller/QuestionListTable.php:22
+msgid "questions"
+msgstr ""
+
+#: controller/QuestionListTable.php:30 views/faq_question_edit.php:12
+msgid "Edit Question"
+msgstr ""
+
+#: controller/QuestionListTable.php:55
+msgid "Question"
+msgstr ""
+
+#: controller/QuestionListTable.php:56
+msgid "Group"
+msgstr ""
+
+#: controller/QuestionListTable.php:58
+msgid "Who Asked"
+msgstr ""
+
+#: controller/QuestionListTable.php:59
+msgid "Date"
+msgstr ""
+
+#: controller/QuestionListTable.php:134
+msgid "d/M/Y"
+msgstr ""
+
+#: controller/ViewController.php:44
+msgid "Invalid Email Address"
+msgstr ""
+
+#: models/Group.php:34
+msgid "Missing Group Name"
+msgstr ""
+
+#: models/Question.php:44
+msgid "Missing Question"
+msgstr ""
+
+#: models/Question.php:49
+msgid "Missing Group"
+msgstr ""
+
+#: tsc-faq-manager.php:155 tsc-faq-manager.php:156
+msgid "Tecnosenior FAQs"
+msgstr ""
+
+#: tsc-faq-manager.php:162 tsc-faq-manager.php:163 views/faq_settings.php:10
+msgid "Settings"
+msgstr ""
+
+#: tsc-faq-manager.php:169 tsc-faq-manager.php:170 views/faq_groups.php:10
+msgid "Groups"
+msgstr ""
+
+#: tsc-faq-manager.php:197
+msgid "Invalid controller"
+msgstr ""
+
+#: tsc-faq-manager.php:205 tsc-faq-manager.php:235
+msgid "Invalid request"
+msgstr ""
+
+#: views/faq_group_create.php:11
+msgid "Create Group"
+msgstr ""
+
+#: views/faq_group_create.php:21 views/faq_group_edit.php:22
+msgid "Group Name"
+msgstr ""
+
+#: views/faq_group_create.php:25 views/faq_group_edit.php:26
+msgid "The name of the group."
+msgstr ""
+
+#: views/faq_group_create.php:29 views/faq_group_edit.php:30
+msgid "Show Search Box"
+msgstr ""
+
+#: views/faq_group_create.php:31 views/faq_group_create.php:39
+#: views/faq_group_edit.php:33 views/faq_group_edit.php:43
+msgid "Yes"
+msgstr ""
+
+#: views/faq_group_create.php:32 views/faq_group_create.php:40
+#: views/faq_group_edit.php:35 views/faq_group_edit.php:45
+msgid "No"
+msgstr ""
+
+#: views/faq_group_create.php:33 views/faq_group_edit.php:36
+msgid "Place a search box above the group questions."
+msgstr ""
+
+#: views/faq_group_create.php:37 views/faq_group_edit.php:40
+msgid "Show Ask Box"
+msgstr ""
+
+#: views/faq_group_create.php:41 views/faq_group_edit.php:46
+msgid ""
+"Place a submission box below the group questions for users/members to ask "
+"questions."
+msgstr ""
+
+#: views/faq_group_create.php:50 views/faq_group_edit.php:57
+msgid ""
+"Deactivating a group will prevent it's questions from being shown on the "
+"front-end."
+msgstr ""
+
+#: views/faq_group_create.php:56 views/faq_question_create.php:55
+msgid "Create"
+msgstr ""
+
+#: views/faq_group_edit.php:63 views/faq_group_edit_order.php:28
+#: views/faq_question_edit.php:60
+msgid "Save"
+msgstr ""
+
+#: views/faq_groups.php:12 views/faq_questions.php:12
+msgid "Add New"
+msgstr ""
+
+#: views/faq_question_create.php:12
+msgid "Create Question"
+msgstr ""
+
+#: views/faq_question_create.php:22 views/faq_question_edit.php:23
+msgid "Enter question here:"
+msgstr ""
+
+#: views/faq_question_create.php:32 views/faq_question_edit.php:33
+msgid "Extra Info"
+msgstr ""
+
+#: views/faq_question_create.php:36 views/faq_question_edit.php:37
+msgid "FAQ Group:"
+msgstr ""
+
+#: views/faq_question_create.php:46 views/faq_question_edit.php:51
+msgid "Status:"
+msgstr ""
+
+#: views/faq_settings.php:17
+msgid "New Questions"
+msgstr ""
+
+#: views/faq_settings.php:21
+msgid "Enable New Questions"
+msgstr ""
+
+#: views/faq_settings.php:24
+msgid "Enable questions on the front-end."
+msgstr ""
+
+#: views/faq_settings.php:28
+msgid "Notification Address"
+msgstr ""
+
+#: views/faq_settings.php:31
+msgid "Email address to were the notification will be sent."
+msgstr ""
+
+#: views/faq_settings.php:35
+msgid "Notify on New Questions"
+msgstr ""
+
+#: views/faq_settings.php:38
+msgid "Get a notification email when a new question is posted on the site."
+msgstr ""
+
+#: views/faq_settings.php:42
+msgid "Notify Enquirer When Answered"
+msgstr ""
+
+#: views/faq_settings.php:45
+msgid "Send an email to the person that posted the question."
+msgstr ""
+
+#: views/faq_settings.php:49
+msgid "Require Email Address"
+msgstr ""
+
+#: views/faq_settings.php:52
+msgid "To ask a question, the person needs a valid email address."
+msgstr ""
+
+#: views/faq_settings.php:58
+msgid "Shortcode Skin"
+msgstr ""
+
+#: views/faq_settings.php:62
+msgid "Current Skin"
+msgstr ""
+
+#: views/faq_settings.php:80
+msgid "Save Changes"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Tecnosenior FAQ Manager"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "www.tecnosenior.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Managing Frequently Asked Questions was Never So Easy."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Pedro Kiefer"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.pedro.kiefer.com.br"
+msgstr ""

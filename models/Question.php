@@ -41,12 +41,12 @@ class Question extends GenericModel
         $valid = true;
 
         if (!$this->_Question || empty($this->_Question)) {
-            $this->validationMessages .= "Missing Question <br/>";
+            $this->validationMessages .= __("Missing Question", 'tsc-faq-manager') . "<br/>";
             $valid = false;
         }
 
         if (!$this->_GroupId || empty($this->_GroupId)) {
-            $this->validationMessages .= "Missing Group <br/>";
+            $this->validationMessages .= __("Missing Group", 'tsc-faq-manager') . "<br/>";
             $valid = false;
         }
 

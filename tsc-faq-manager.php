@@ -29,7 +29,7 @@ class TscFaqManager
 {
 
     static $instance;
-    public $version = '1.0';
+    public $version = '1.2';
     public $groupTableName;
     public $questionTableName;
     public $settings;
@@ -44,6 +44,8 @@ class TscFaqManager
         $this->questionTableName = $wpdb->prefix . "tsc_faq_question";
         $this->settings = &Settings::load();
 
+        add_action('init', array(&$this, 'i18n'), 5);
+
         add_action('admin_menu', array(&$this, 'onAdminMenu'));
         add_action('admin_enqueue_scripts', array(&$this, 'enqueueAdminScripts'));
 
@@ -56,6 +58,11 @@ class TscFaqManager
         if (is_admin()) {
             add_action('wp_ajax_faqAction', array(&$this, 'handleFaqActions'));
         }
+    }
+
+    function i18n()
+    {
+        load_plugin_textdomain('tsc-faq-manager', false, plugin_basename(dirname(__FILE__)) . '/languages/');
     }
 
     function enqueueAdminScripts()
@@ -145,12 +152,39 @@ class TscFaqManager
         if (!is_admin())
             return;
 
-        add_menu_page("Tecnosenior FAQs", "Tecnosenior FAQs", "administrator", "tsc_faq", array(&$this, "handle_page_faq_settings"));
-        add_submenu_page('tsc_faq', 'Settings', 'Settings', 'administrator', "tsc_faq", array(&$this, "handle_page_faq_settings"));
-        add_submenu_page('tsc_faq', 'Groups', 'Groups', 'administrator', 'tsc_faq_groups', array(&$this, 'handle_page_faq_groups'));
-        add_submenu_page('tsc_faq', 'Questions', 'Questions', 'administrator', 'tsq_faq_questions', array(&$this, 'handle_page_faq_questions'));
+        add_menu_page(__("Tecnosenior FAQs", 'tsc-faq-manager'),
+            __("Tecnosenior FAQs", 'tsc-faq-manager'),
+            "administrator",
+            "tsc_faq",
+            array(&$this, "handle_page_faq_settings"));
+
+        add_submenu_page('tsc_faq',
+            __('Settings', 'tsc-faq-manager'),
+            __('Settings', 'tsc-faq-manager'),
+            'administrator',
+            "tsc_faq",
+            array(&$this, "handle_page_faq_settings"));
+
+        add_submenu_page('tsc_faq',
+            __('Groups', 'tsc-faq-manager'),
+            __('Groups', 'tsc-faq-manager'),
+            'administrator',
+            'tsc_faq_groups',
+            array(&$this, 'handle_page_faq_groups'));
+
+        add_submenu_page('tsc_faq',
+            __('Questions', 'tsc-faq-manager'),
+            __('Questions', 'tsc-faq-manager'),
+            'administrator',
+            'tsq_faq_questions',
+            array(&$this, 'handle_page_faq_questions'));
     }
 
+    /**
+     * Handle admin ajax requests
+     *
+     * @throws TscAsyncException
+     */
     public function handleFaqActions()
     {
         if (!isset($_REQUEST['req']))
@@ -160,7 +194,7 @@ class TscFaqManager
         $ctlName = $req[1] . "Controller";
         try {
             if (!class_exists($ctlName))
-                throw new TscAsyncException("Invalid controller");
+                throw new TscAsyncException(__("Invalid controller", 'tsc-faq-manager'));
 
             $controller = new $ctlName;
             $action = $req[0];
@@ -168,7 +202,7 @@ class TscFaqManager
             if (method_exists($controller, $action)) {
                 $controller->$action();
             } else {
-                throw new TscAsyncException("Invalid request");
+                throw new TscAsyncException(__("Invalid request", 'tsc-faq-manager'));
             }
         } catch (TscAsyncException $e) {
             header("Content-type: application/json");
@@ -180,6 +214,9 @@ class TscFaqManager
         exit();
     }
 
+    /**
+     * Handle front-end ajax request
+     */
     public function handleFaqQuery()
     {
         if (!isset($_REQUEST['req']))
@@ -195,7 +232,7 @@ class TscFaqManager
             $controller->addNewQuestion();
         } else {
             header("Content-type: application/json");
-            echo json_encode(array("status" => "error", "message" => "Invalid request"));
+            echo json_encode(array("status" => "error", "message" => __("Invalid request", 'tsc-faq-manager')));
         }
         exit();
     }
