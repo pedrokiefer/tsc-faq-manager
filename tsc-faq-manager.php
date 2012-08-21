@@ -119,6 +119,10 @@ class TscFaqManager
         if (isset($attributes['askbox']))
             $currentGroup->AskBox = $attributes['askbox'];
 
+        /* Disable Questions if option not set */
+        if ($this->settings->EnableQuestions != 1)
+            $currentGroup->AskBox = 0;
+
         $questions = Question::loadByGroupId($currentGroup->Id, true, true);
 
         $skin = $this->settings->Skin;
