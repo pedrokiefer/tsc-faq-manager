@@ -22,10 +22,10 @@ class QuestionController
         } else {
             $question = new Question();
 
-            $question->Question = $wpdb->escape($_POST['question']);
-            $question->Answer = $wpdb->escape($_POST['answer']);
-            $question->GroupId = $wpdb->escape($_POST['group_id']);
-            $question->Status = $wpdb->escape($_POST['status']);
+            $question->Question = $_POST['question'];
+            $question->Answer = $_POST['answer'];
+            $question->GroupId = $_POST['group_id'];
+            $question->Status = $_POST['status'];
 
             if (!$question->validate()) {
                 echo json_encode(array(
@@ -56,10 +56,10 @@ class QuestionController
         } else {
             $question = Question::load($_REQUEST['id']);
 
-            $question->Question = $wpdb->escape($_POST['question']);
-            $question->Answer = $wpdb->escape($_POST['answer']);
-            $question->GroupId = $wpdb->escape($_POST['group_id']);
-            $question->Status = $wpdb->escape($_POST['status']);
+            $question->Question = $_POST['question'];
+            $question->Answer = $_POST['answer'];
+            $question->GroupId = $_POST['group_id'];
+            $question->Status = $_POST['status'];
 
             if (!$question->validate()) {
                 echo json_encode(array(

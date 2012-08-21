@@ -19,10 +19,10 @@ class GroupController
         } else {
             $group = new Group();
 
-            $group->GroupName = $wpdb->escape($_POST['group_name']);
-            $group->SearchBox = $wpdb->escape($_POST['search_box']);
-            $group->AskBox = $wpdb->escape($_POST['ask_box']);
-            $group->Status = $wpdb->escape($_POST['status']);
+            $group->GroupName = $_POST['group_name'];
+            $group->SearchBox = $_POST['search_box'];
+            $group->AskBox = $_POST['ask_box'];
+            $group->Status = $_POST['status'];
 
             if (!$group->validate()) {
                 echo json_encode(array(
@@ -52,10 +52,10 @@ class GroupController
         } else {
             $group = Group::load($_REQUEST['id']);
 
-            $group->GroupName = $wpdb->escape($_POST['group_name']);
-            $group->SearchBox = $wpdb->escape($_POST['search_box']);
-            $group->AskBox = $wpdb->escape($_POST['ask_box']);
-            $group->Status = $wpdb->escape($_POST['status']);
+            $group->GroupName = $_POST['group_name'];
+            $group->SearchBox = $_POST['search_box'];
+            $group->AskBox = $_POST['ask_box'];
+            $group->Status = $_POST['status'];
 
             if (!$group->validate()) {
                 echo json_encode(array(
