@@ -24,7 +24,7 @@ class Settings extends GenericModel
             "tsc_faq_email_address" => get_option("admin_email"),
             "tsc_faq_save_emails_addresses" => "1",
             "tsc_faq_notify_on_answer" => "1",
-            "tsq_faq_skin" => "Default Skin"
+            "tsq_faq_skin" => "default/default.php"
         );
 
         foreach ($defaultOptions as $key => $value) {
